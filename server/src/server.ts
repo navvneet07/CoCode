@@ -21,6 +21,8 @@ const server = http.createServer(app)
 const io = new Server(server, {
 	cors: {
 		origin: "*",
+		methods: ["GET", "POST"],
+		credentials: true
 	},
 	maxHttpBufferSize: 1e8,
 	pingTimeout: 60000,
@@ -342,6 +344,6 @@ app.get("/", (req: Request, res: Response) => {
 	res.sendFile(path.join(__dirname, "..", "public", "index.html"))
 })
 
-server.listen(PORT, () => {
-	console.log(`Listening on port ${PORT}`)
+server.listen({ port: Number(PORT), host: '0.0.0.0' }, () => {
+	console.log(`Listening on 0.0.0.0:${PORT}`)
 })

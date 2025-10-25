@@ -7,11 +7,11 @@ services:
       target: runner
     volumes:
       - ./server:/app
-      - /build/node_modules
+      - /app/node_modules
     networks:
       - CoCode
     ports:
-      - "3000:3000"
+      - "4000:3000"
 
   client:
     container_name: cocode-client
@@ -21,11 +21,11 @@ services:
       target: runner
     volumes:
       - ./client:/app
-      - /build/node_modules
+      - /app/node_modules
     networks:
       - CoCode
     ports:
-      - "5173:5173"
+      - "4173:5173"
     depends_on:
       - server
 
